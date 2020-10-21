@@ -1,0 +1,83 @@
+<div class="container">
+	<div class="row">
+		<nav class="navbar navbar-container navbar-expand-lg navbar-dark fixed-top" id="mainNav"
+			style="background-color:#fafafa;max-height:120px;">
+			<div class="container">
+				<a class="navbar-brand js-scroll-trigger" href="/"><img src="/img/kutbilge_logo.png" alt=""></a>
+				
+				<div class="col-md-3">
+					<form action="/posts/search" method="GET">
+						<div class="widget">
+							<div class="widget-search">
+								<input class="search-input form-control" name="look" type="text" placeholder="Ara">
+								<button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+							</div>
+						</div>
+					</form>
+				</div>
+				
+
+				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+					data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+					aria-label="Toggle navigation" style="margin: 0px 20px 0px -100px;">
+					Menu
+					<i class="fas fa-bars"></i>
+				</button>
+			</div>
+		</nav>
+	</div>
+	
+	<div class="row">
+		<nav class="navbar navbar-container navbar-expand-lg navbar-dark fixed-top" style="margin:100px 0px 0px 0px;background-color:#162643;" id="mainNav">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="collapse navbar-collapse" id="navbarResponsive">
+							<ul class="navbar-nav text-uppercase ml-auto">
+								<li class="nav-item">
+									<a class="nav-link" href="/">ANASAYFA</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/management">Yönetim</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/symposiums">Sempozyumlar</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/magazines">Dergiler</a>
+								</li>
+								{{#if displayTrue}}
+								<li class="nav-item">
+									<a class="nav-link" href="/admin">Admin</a>
+								</li>
+								{{/if}}
+								<li class="nav-item">
+									<a class="nav-link" href="/about">Hakkımızda</a>
+								</li>
+
+								{{#unless displayTrue}}
+								{{!--<li class="nav-item">
+								<a class="nav-link" href="/users/login">Giriş Yap</a>
+							</li>--}}
+								{{!-- <li class="nav-item">
+								<a class="nav-link" href="/users/register">Kaydol</a>
+							</li> --}}
+								{{/unless}}
+								{{#if displayTrue}}
+								<li class="nav-item">
+									<a class="nav-link" href="/users/logout">Çıkış Yap</a>
+								</li>
+								{{/if}}
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</nav>
+	</div>
+
+</div>
+
+
+

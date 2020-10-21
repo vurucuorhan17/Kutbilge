@@ -1,0 +1,48 @@
+<section id="contact" class="md-padding">
+	<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<div class="row text-center">
+				<div class="col-md-4 offset-md-4">
+					<div class="section-header">
+						<h2 class="title">Dergi Ekle</h2>
+					</div>
+				</div>
+			</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<form action="/admin/addMagazine" method="POST" enctype="multipart/form-data">
+					<div class="row">
+						<div class="offset-2 col-md-8">
+							<div class="form-group">
+								<input class="form-control" name="magazine_info" type="text" placeholder="Dergi Bilgisi " data-validation-required-message="Please enter your username.">
+								<p class="help-block text-danger"></p>
+							</div>
+                            <div class="form-group">
+								<input class="form-control" name="magazine_link" type="text" placeholder="Dergi Linki " data-validation-required-message="Please enter your username.">
+								<p class="help-block text-danger"></p>
+							</div>
+							<div class="form-group">
+								<input class="form-control" name="magazine_image" type="file">
+								<p class="help-block text-danger"></p>
+							</div>
+                            <div class="form-group">
+								<input class="form-control" name="magazine_file" type="file">
+								<p class="help-block text-danger"></p>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+						<div class="col-lg-12 text-center">
+							<div id="success"></div>
+							<button class="main-btn" type="submit">Dergi Ekle</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div>
+</section>

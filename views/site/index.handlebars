@@ -1,0 +1,139 @@
+<div>
+
+	<div style="margin-top:120px;">
+		<div class="row">
+			<div class="col-md-10 offset-md-1">
+				<div id="" class="owl-carousel owl-theme">
+					{{#each posts}}
+					<div>
+						<div class="textoverlay">
+							<h1 style="color:white;text-shadow: 1px 1px black;font-size:x-large;">{{title}}</h1><a
+								href="/posts/{{_id}}"><button class="main-btn">Devamı için tıklayın</button></a>
+						</div><img src="{{post_image}}"/>
+						
+					</div>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<br><br><br>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="container">
+						<section style="margin-bottom: -80px;padding-bottom: 0px;margin-top:-75px;" class="md-padding">
+							<div class="row text-center">
+								<div class="col-md-12">
+									<div class="section-header">
+										<h2 class="title"> Dernek Çalışma Konuları </h2>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<br><br>
+						
+						<div class="row" style="font-weight: 700;font-size: 15px;">
+							<div class="col-md-12">
+								<ol>
+									<li>1- Faaliyetlerinin etkinleştirilmesi ve geliştirilmesi için araştırmalar yapmak</li>
+									<li>2- Kurs, seminer, konferans ve panel gibi eğitim çalışmaları düzenlemek</li>
+									<li>3- Amacın gerçekleştirilmesi için gerekli olan her türlü bilgi, belge, doküman ve yayınları temin etmek, dokümantasyon merkezi oluşturmak, çalışmalarını duyurmak için amaçları doğrultusunda gazete, dergi, kitap ve bülten gibi yayınlar çıkarmak,</li>
+									<li>4- Gerekli izinler alınmak şartıyla yardım toplama faaliyetlerinde bulunmak ve yurt içinden ve yurt dışından bağış kabul etmek,</li>
+									<li>5- Üyeleri arasında beşeri münasebetlerin geliştirilmesi ve devam ettirilmesi için yemekli toplantılar, konser, balo, tiyatro, sergi, spor, gezi ve eğlenceli etkinlikler vb. düzenlemek veya üyelerinin bu tür etkinliklerden yararlanmalarını sağlamak,</li>
+									<li>6- Uluslararası faaliyette bulunmak, yurt dışındaki dernek veya kuruluşlara üye olmak ve bu kuruluşlarla ortak çalışmalar yapmak veya yardımlaşmak,</li>
+									<li>7- Amacın gerçekleştirilmesi için gerek görülmesi halinde, 5072 sayılı Dernek ve Vakıfların Kamu Kurum ve Kuruluşları ile İlişkilerine Dair Kanun hükümleri saklı kalmak üzere, kamu kurum ve kuruluşları ile görev alanlarına giren konularda ortak projeler yürütmek,</li>
+									<li>8- Derneğin amacı ile ilgisi bulunan ve kanunlarla yasaklanmayan alanlarda, diğer derneklerle veya vakıf, sendika ve benzeri sivil toplum kuruluşlarıyla ortak bir amacı gerçekleştirmek için plâtformlar oluşturmak,</li>
+									<li>9- Gerekli görüldüğü takdirde bilimsel dergi, gazete ve bültenler oluşturarak dernekçe gerçekleştirilen makale ve bildirileri yayınlamak</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+			</div>
+
+			<div class="col-md-4">
+				<!-- Links  -->
+				<div class="widget">
+					<div class="widget-link">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="mb-0">Linkler</h3>
+							</div>
+							<div class="card-body">
+								<a href="http://iconst.org/">ICONST</a>
+								<a href="http://www.iconsr.org/">ICONSR</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<br><br>
+
+				<div class="widget">
+					<div class="widget-link">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="mb-0">SAYFALAR</h3>
+							</div>
+							<div class="card-body">
+								<a href="/">Anasayfa</a>
+								<a href="/management">Yönetim</a>
+								<a href="/symposiums">Sempozyumlar</a>
+								<a href="/magazines">Dergiler</a>
+								<a href="/about">Hakkımızda</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<section style="margin-bottom: -80px;padding-bottom: 0px;margin-top:30px;" class="md-padding">
+            <div class="row text-center">
+				<div class="col-md-4 offset-md-4">
+					<div class="section-header">
+						<h2 class="title">Sempozyumlar</h2>
+					</div>
+				</div>
+		    </div>
+    </section>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<section id="blog" class="md-padding">
+						<div class="container">
+							<div class="row">
+								<main id="main" class="col-md-12">
+									<div class="row">
+										{{#each (limit posts 3)}}
+										<div class="col-md-4">
+											<div class="blog">
+												<div class="blog-img">
+													<img src="{{post_image}}" class="img-fluid">
+												</div>
+												<div class="blog-content">
+													<h3>{{title}}</h3>
+													<p>{{truncate content 120}}</p>
+													<a href="/posts/{{_id}}">Detay için Tıklayın</a>
+												</div>
+											</div>
+										</div>
+										{{/each}}
+									</div>
+								</main>
+							</div>
+						</div>
+					</section>
+			</div>
+		</div>
+	</div>
+
+	
+</div>

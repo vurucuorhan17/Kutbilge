@@ -1,0 +1,97 @@
+	
+	<!--==========================
+    Contact Section
+
+	<section class="page-image page-image-blog md-padding">
+		<h1 class="text-white text-center">MAKALELER</h1>
+	</section>
+
+============================-->
+	<section id="blog" class="md-padding" style="margin:10px 0px 0px 0px;">
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<div class="row">
+				<div class="col-md-12">
+					<p><b>KUTBİLGE AKADEMİSYENLER DERNEĞİ
+
+					TARAFINDAN GERÇEKLEŞTİRİLMİŞ YAYINCILIK FAALİYETLERİ<br>
+
+					Bilge Internatıonal Journal of Scıence and Technology Research – Dergi <br>
+
+					International Conference on Science and Technology – Kitap <br>
+
+					International Conference on Social Science Research – Kitap</b><br>
+
+					Yukarıda belirtilen tüm süreli yayın olan dergiler ve süresiz yayın olan kitaplar;
+
+					T.C. KÜLTÜR VE TURİZM BAKANLIĞI tarafından <b>42086</b> sertifika no ile dernek adına verilen <br>
+
+					<b>KUTBİLGE AKADEMİSYENLER DERNEĞİ DAĞITIM, SATIŞ, YAYINEVİ</b> tarafından yayınlanmaktadır.</p>
+				</div>
+			</div>
+			<div class="row">
+				<main id="main" class="col-md-8">
+					{{#if sessionFlash.message}}
+						<div class="{{sessionFlash.type}}">
+							{{sessionFlash.message}}
+						</div>
+					{{/if}}
+
+					<div class="row">
+						{{#each posts}}
+						<div class="col-md-6">
+							<div class="blog">
+								<div class="blog-img">
+									<img src="{{post_image}}" class="img-fluid">
+								</div>
+								<div class="blog-content">
+									{{!--<ul class="blog-meta">
+										<li><i class="fas fa-users"></i><span class="writer">{{author.username}}</span></li>
+										<li><i class="fas fa-clock"></i><span class="writer">{{generateDate date "MMM DD YYYY"}}</span></li>
+										
+									</ul>--}}
+									<h3>{{title}}</h3>
+									<p>{{truncate content 120}}</p>
+									<a href="/posts/{{_id}}">Detay için Tıklayın</a>
+								</div>
+							</div>
+						</div>
+						{{/each}}
+                        <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+
+	  {{#paginate current=current pages=pages}}
+	  {{/paginate}}
+
+    {{!-- <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li> --}}
+  </ul>
+</nav>
+					</div>
+				</main>
+				
+					<!-- /Search -->
+                    
+                    
+					{{> site-sidebar}}
+					<!-- /Category -->
+
+					<!-- Posts sidebar -->
+					
+				
+				
+				
+			</div>
+
+		</div>
+	</section>
