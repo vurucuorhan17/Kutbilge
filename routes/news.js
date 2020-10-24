@@ -5,6 +5,7 @@ const User = require("../models/User");
 const News = require("../models/News");
 
 const path = require("path");
+const { type } = require("os");
 
 router.get("/new",(req,res) => {
     
@@ -51,16 +52,30 @@ router.post("/addNews", async (req,res) => {
 
     await news.save();
 
-    news_images.map((file,i) => {
-        file.mv(path.resolve(__dirname, "../public/img/newsimages", file.name));
+    
+    if(Array.isArray(news_images))
+    {
+        news_images.map((file,i) => {
+            file.mv(path.resolve(__dirname, "../public/img/newsimages", file.name));
+
+            News.findByIdAndUpdate(news._id,{
+                $push: {
+                    news_images: `/img/newsimages/${file.name}`
+                }
+            }).then(result => console.log(result));
+            
+        });
+    }
+    else 
+    {
+        news_images.mv(path.resolve(__dirname, "../public/img/newsimages", news_images.name));
 
         News.findByIdAndUpdate(news._id,{
             $push: {
-                news_images: `/img/newsimages/${file.name}`
+                news_images: `/img/newsimages/${news_images.name}`
             }
         }).then(result => console.log(result));
-        
-    });
+    }
 
     await news.save().then(param => res.redirect("/admin"));
 

@@ -992,6 +992,46 @@ span.writer {
 	margin-left:50px;
 	margin-top:50px;
 }
+#navSearch{
+    width: 100%;
+}
+
+#navSearch2 {
+    display: block;
+}
+
+
+@media only screen and (max-width: 768px){
+    #navSearch2 {
+        display: none;
+    }
+    .orhan{
+        position: relative;
+    }
+    #responsiveMenu {
+        margin-right: 20px;
+        z-index: 999;
+    }
+    #navSearch {
+         position: absolute;
+         right: 0;
+         top: 460px;
+         background: #162643;
+         width: 100%;
+         display: none;
+    }
+    
+}
+
+@media screen and (min-width: 768px){
+    #navSearch {
+        display: none;
+    }
+    #navSearch2 {
+        display: block;
+    }
+}
+
 
 
 

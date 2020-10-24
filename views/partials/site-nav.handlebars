@@ -2,10 +2,10 @@
 	<div class="row">
 		<nav class="navbar navbar-container navbar-expand-lg navbar-dark fixed-top" id="mainNav"
 			style="background-color:#fafafa;max-height:120px;">
-			<div class="container">
+			<div class="container orhan">
 				<a class="navbar-brand js-scroll-trigger" href="/"><img src="/img/kutbilge_logo.png" alt=""></a>
 				
-				<div class="col-md-3">
+				<div class="col-md-3" id="navSearch2" >
 					<form action="/news/search" method="GET">
 						<div class="widget">
 							<div class="widget-search">
@@ -15,11 +15,21 @@
 						</div>
 					</form>
 				</div>
-				
+
+				<div class="col-md-3" id="navSearch" >
+					<form action="/news/search" method="GET">
+						<div class="widget">
+							<div class="widget-search">
+								<input class="search-input form-control" name="look" type="text" placeholder="Ara">
+								<button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+							</div>
+						</div>
+					</form>
+				</div>
 
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
 					data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-					aria-label="Toggle navigation" style="margin: 0px 20px 0px -100px;">
+					aria-label="Toggle navigation" id="responsiveMenu">
 					Menu
 					<i class="fas fa-bars"></i>
 				</button>
@@ -29,7 +39,7 @@
 	
 	<div class="row">
 		<nav class="navbar navbar-container navbar-expand-lg navbar-dark fixed-top" style="margin:100px 0px 0px 0px;background-color:#162643;" id="mainNav">
-			<div class="container">
+			<div class="container"> 
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="collapse navbar-collapse" id="navbarResponsive">

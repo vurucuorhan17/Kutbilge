@@ -6,34 +6,34 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 
-router.get("/register",(req,res) => {
-    res.render("site/register");
-});
+// router.get("/register",(req,res) => {
+//     res.render("site/register");
+// });
 
-router.post("/register",(req,res) => {
+// router.post("/register",(req,res) => {
 
-    const pass = req.body.password;
-    bcrypt.hash(pass,saltRounds,(err,hash) => {
-        // console.log(hash);
-        User.create({
-            "username":req.body.username,
-            "email":req.body.email,
-            "password":hash
-        }).then(user => {
-            res.redirect("/users/login")
-        });
-    });
+//     const pass = req.body.password;
+//     bcrypt.hash(pass,saltRounds,(err,hash) => {
+//         // console.log(hash);
+//         User.create({
+//             "username":req.body.username,
+//             "email":req.body.email,
+//             "password":hash
+//         }).then(user => {
+//             res.redirect("/users/login")
+//         });
+//     });
     
 
-    // User.create(req.body,(err,user) => {
-    //     const pass = req.body.password;
-    //     req.session.sessionFlash = {
-    //         type:"alert alert-info",
-    //         message:"Kullanıcı başarılı bir şekilde oluşturuldu"
-    //     };
-    //     res.redirect("/users/login");
-    // });
-});
+//     // User.create(req.body,(err,user) => {
+//     //     const pass = req.body.password;
+//     //     req.session.sessionFlash = {
+//     //         type:"alert alert-info",
+//     //         message:"Kullanıcı başarılı bir şekilde oluşturuldu"
+//     //     };
+//     //     res.redirect("/users/login");
+//     // });
+// });
 
 router.get("/login",(req,res) => {
     res.render("site/login");
