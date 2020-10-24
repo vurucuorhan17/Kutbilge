@@ -1,0 +1,46 @@
+<aside id="aside" class="col-md-4">
+
+    <form action="/news/search" method="GET">
+        <div class="widget">
+            <div class="widget-search">
+                <input class="search-input form-control" name="look" type="text" placeholder="Haberlerde Ara">
+                <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Links  -->
+    <div class="widget">
+        <div class="widget-link">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Linkler</h3>
+                </div>
+                <div class="card-body">
+                    <a href="http://iconst.org/">ICONST</a>
+                    <a href="http://www.iconsr.org/">ICONSR</a>
+                    <a href="https://dergipark.org.tr/tr/pub/bilgesci">Bilgesci</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="widget">
+        <h3 class="mb-3">Son Haberler</h3>
+        {{#each (limit news 3)}}
+        <!-- single post -->
+        <div class="widget-post">
+            <a href="/posts/{{_id}}">
+                <img class="img-fluid" src="{{limitation news_images}}" alt="">{{title}}
+            </a>
+            {{!--<ul class="blog-meta">
+                <li>{{generateDate date "MMM DD YYYY"}}</li>
+            </ul>--}}
+        </div>
+        {{/each}}
+        <!-- /single post -->
+
+    </div>
+    <!-- /Posts sidebar -->
+
+</aside>

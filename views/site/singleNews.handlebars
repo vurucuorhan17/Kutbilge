@@ -1,0 +1,49 @@
+<!--==========================
+    INSIDE HERO SECTION Section
+============================-->
+	
+
+	<!--==========================
+    Contact Section
+	<section class="page-image page-image-contact md-padding">
+		<h1 class="text-white text-center">BLOG</h1>
+	</section>
+============================-->
+	<section id="blog" class="md-padding" style="margin:10px 0px 0px 0px;">
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<div class="row">
+                <main id="main" class="col-md-8">
+					<div class="blog">
+						<div class="blog-img">
+							<div id="" class="owl-carousel owl-theme">
+                                {{#each singleNews.news_images}}
+                                <div>
+                                    <img src="{{this}}"/>
+                                </div>
+                                {{/each}}
+                            </div>
+						</div>
+						<div class="blog-content">
+							<h3>{{singleNews.title}}</h3>
+							<p>{{singleNews.content}}</p>
+							<br>
+						</div>
+
+						<!-- /reply form -->
+					</div>
+				</main>
+				<!-- /Main -->
+				
+				
+				{{> news-sidebar}}
+				
+				
+				
+			</div>
+
+		</div>
+	</section>

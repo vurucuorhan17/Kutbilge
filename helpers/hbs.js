@@ -16,6 +16,9 @@ module.exports = {
         }
         return str;
     },
+    limitation: (news_images) => {
+        return news_images[0];
+    },
     paginate: (options) => {
 
         let outputHTML = "";

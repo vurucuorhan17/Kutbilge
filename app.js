@@ -2,7 +2,7 @@ const express = require("express");
 const exphbs  = require('express-handlebars');
 var bodyParser = require('body-parser')
 const fileUpload = require("express-fileupload");
-const { generateDate,limit,truncate,paginate }  = require("./helpers/hbs");
+const { generateDate,limit,truncate,paginate,limitation }  = require("./helpers/hbs");
 const expressSession = require("express-session");
 const connectMongo = require("connect-mongo");
 const methodOverride = require('method-override');
@@ -15,7 +15,8 @@ const hbs = exphbs.create({
     generateDate:generateDate,
     limit:limit,
     truncate:truncate,
-    paginate:paginate
+    paginate:paginate,
+    limitation
   }
 });
 
@@ -28,7 +29,8 @@ const mongoose = require("mongoose");
 mongoose.connect('mongodb://127.0.0.1/kutbilge_db', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true
+  useCreateIndex: true,
+  useFindAndModify: true
 }).then(() => console.log("Database connected")).catch(err => console.log(err));
 
 const mongoStore = connectMongo(expressSession);
@@ -89,11 +91,13 @@ const posts = require("./routes/posts");
 const users = require("./routes/users");
 const admin = require("./routes/admin");
 const contact = require("./routes/contact");
+const news = require("./routes/news");
 
 app.use("/",main);
 app.use("/posts",posts);
 app.use("/users",users);
 app.use("/admin",admin);
 app.use("/contact",contact);
+app.use("/news",news);
 
 app.listen(port,hostname,() => console.log(`Server Dinleniyor: http://${hostname}:${port}`));

@@ -4,15 +4,13 @@ const router = express.Router();
 const Post = require("../models/Post");
 const Category = require("../models/Categories");
 const User = require("../models/User");
-const Index = require("../models/Index");
 const Magazine = require("../models/Magazine");
+const News = require("../models/News");
 
 router.get("/",(req,res) => {
 
-        Post.find({}).sort({$natural:-1}).then(posts => {
-            Category.find({}).then(categories => {
-                res.render("site/index",{posts:posts,categories:categories});
-            })
+        News.find({}).sort({$natural:-1}).then(news => {
+            res.render("site/index",{news});
         });
         
 });
@@ -60,6 +58,29 @@ router.get("/symposiums",(req,res) => {
         
     })
     
+});
+
+router.get("/news",(req,res) => {
+
+    const postPerPage = 4;
+    const page = req.query.page || 1;
+
+    News.find({})
+    .sort({$natural: -1})
+    .skip((postPerPage * page) - postPerPage)
+    .limit(postPerPage)
+    .then((news) => {
+        News.countDocuments()
+        .then((newsCount) => {
+            res.render("site/news",{
+                news,
+                current: parseInt(page),
+                pages: Math.ceil(newsCount/postPerPage)
+            });
+        });
+
+    });
+
 });
 
 router.get("/management",(req,res) => {
