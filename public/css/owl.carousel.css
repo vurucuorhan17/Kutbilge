@@ -9,6 +9,7 @@
 .owl-carousel {
   display: none;
   width: 100%;
+  max-width: 700px;
   -webkit-tap-highlight-color: transparent;
   /* position relative and z-index fix webkit rendering fonts issue */
   position: relative;
@@ -48,7 +49,8 @@
     -webkit-touch-callout: none; }
   .owl-carousel .owl-item img {
     display: block;
-    width: 100%; }
+    max-width: 700px;
+   }
   .owl-carousel .owl-nav.disabled,
   .owl-carousel .owl-dots.disabled {
     display: none; }

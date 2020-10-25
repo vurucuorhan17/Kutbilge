@@ -2,14 +2,14 @@
 
 	<div style="margin-top:120px;">
 		<div class="row">
-			<div class="col-md-10 offset-md-1">
-				<div id="" class="owl-carousel owl-theme">
+			<div class="col-md-10 offset-md-3">
+				<div id="mainSlider" class="owl-carousel owl-theme">
 					{{#each (limit news 6)}}
 					<div>
 						<div class="textoverlay">
-							<h1 style="color:white;text-shadow: 1px 1px black;font-size:x-large;">{{title}}</h1><a
+							<h1 style="color:white;text-shadow: 1px 1px black;font-size:x-large;max-width: 550px;text-align: left;">{{title}}</h1><a
 								href="/news/{{_id}}"><button class="main-btn">Devamı için tıklayın</button></a>
-						</div><img src="{{limitation news_images}}"/>
+						</div><img src="{{limitation news_images}}" />
 						
 					</div>
 					{{/each}}
@@ -54,7 +54,7 @@
 					</div>
 			</div>
 
-			<div class="col-md-4">
+			<div class="col-md-4" id="linkler">
 				<!-- Links  -->
 				<div class="widget">
 					<div class="widget-link">
