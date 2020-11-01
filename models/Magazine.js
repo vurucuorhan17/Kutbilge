@@ -10,7 +10,7 @@ const MagazineSchema = mongoose.Schema({
     magazine_image: {
         type: String
     },
-    magazine_file: {
+    magazine_pdf_link: {
         type: String
     }
 });

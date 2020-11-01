@@ -167,6 +167,11 @@ nav.navbar-container {
 
 nav.shrink {
     background-color: #162643!important;
+    
+}
+
+nav.shrink #navLogo {
+    content: url("/img/kutbilgeWHITElogo.png");
 }
 
 

@@ -81,27 +81,37 @@ router.get("/addMagazine",(req,res) => {
 });
 
 router.post("/addMagazine",async (req,res) => {
-    const { magazine_link, magazine_info } = req.body;
-    const { magazine_image, magazine_file } = req.files;
-
-    magazine_image.mv(path.resolve(__dirname, "../public/img/magazine_images", magazine_image.name));
+    const { magazine_link, magazine_info, magazine_pdf_link } = req.body;
     
-    const isFile = typeof magazine_file != "undefined";
-
-    if(isFile)
-    {
-        magazine_file.mv(path.resolve(__dirname, "../public/magazine_file", magazine_file.name));
+    try{
+        const magazine_image  = req.files.magazine_image;
+        const isFile = typeof req.files != null;
+        if(isFile)
+        {
+            magazine_image.mv(path.resolve(__dirname, "../public/img/magazine_images", magazine_image.name));    
+        }
+    
+        const magazine = await new Magazine({
+            magazine_info,
+            magazine_link,
+            magazine_pdf_link,
+            magazine_image: isFile ? `/img/magazine_images/${magazine_image.name}` : null
+        });
+    
+        await magazine.save()
+        .then(magazine => res.redirect("/admin"));        
     }
-
-    const magazine = await new Magazine({
-        magazine_info,
-        magazine_link,
-        magazine_image: `/img/magazine_images/${magazine_image.name}`,
-        magazine_file: isFile ? `/magazine_file/${magazine_file.name}` : null
-    });
-
-    await magazine.save()
-    .then(magazine => res.redirect("/admin"));
+    catch(e){
+        const magazine = await new Magazine({
+            magazine_info,
+            magazine_link,
+            magazine_pdf_link,
+            magazine_image:  null
+        });
+    
+        await magazine.save()
+        .then(magazine => res.redirect("/admin"));       
+    }
 
 });
 
