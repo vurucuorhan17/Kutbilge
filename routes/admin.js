@@ -6,6 +6,7 @@ const Post = require("../models/Post");
 const Magazine = require("../models/Magazine");
 
 const path = require("path");
+const BilateralCoop = require("../models/BilateralCoop");
 
 router.get("/",(req,res) => {
     res.render("admin/index");
@@ -112,6 +113,57 @@ router.post("/addMagazine",async (req,res) => {
         await magazine.save()
         .then(magazine => res.redirect("/admin"));       
     }
+
+});
+
+router.get("/addBilateral",(req,res) => {
+    res.render("admin/addBilateralCoops");
+});
+
+
+router.post("/addBilateral", async (req,res) => {
+
+    const bilateral_coop_images = req.files.bilateral_coop_images;
+    const bilateral_coop_caption = req.files.bilateral_coop_caption;
+
+    const bilateralCoop = await new BilateralCoop({
+        ...req.body
+    });
+
+    await bilateralCoop.save();
+
+    
+    if(Array.isArray(bilateral_coop_images))
+    {
+        bilateral_coop_images.map((file,i) => {
+            file.mv(path.resolve(__dirname, "../public/img/bilateral_images", file.name));
+
+            BilateralCoop.findByIdAndUpdate(bilateralCoop._id,{
+                $push: {
+                    bilateral_coop_images: `/img/bilateral_images/${file.name}`
+                }
+            }).then(result => console.log(result));
+            
+        });
+    }
+    else 
+    {
+        bilateral_coop_images.mv(path.resolve(__dirname, "../public/img/bilateral_images", bilateral_coop_images.name));
+
+        BilateralCoop.findByIdAndUpdate(bilateralCoop._id,{
+            $push: {
+                bilateral_coop_images: `/img/bilateral_images/${bilateral_coop_images.name}`
+            }
+        }).then(result => console.log(result));
+    }
+
+    bilateral_coop_caption.mv(path.resolve(__dirname, "../public/img/bilateral_images", bilateral_coop_caption.name));
+
+    BilateralCoop.findByIdAndUpdate(bilateralCoop._id,{
+        bilateral_coop_caption: `/img/bilateral_images/${bilateral_coop_caption.name}`
+    }).then();
+
+    await bilateralCoop.save().then(param => res.redirect("/admin"));
 
 });
 

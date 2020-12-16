@@ -6,6 +6,7 @@ const Category = require("../models/Categories");
 const User = require("../models/User");
 const Magazine = require("../models/Magazine");
 const News = require("../models/News");
+const BilateralCoop = require("../models/BilateralCoop");
 
 router.get("/",(req,res) => {
 
@@ -97,5 +98,20 @@ router.get("/magazines",(req,res) => {
         res.render("site/magazine",{magazines});
     });
 });
+
+
+router.get("/bilateralcoops",(req,res) => {
+    BilateralCoop.find({})
+    .then((bilateralcoops) => {
+        res.render("site/bilateralcoops",{bilateralcoops});
+    })
+});
+
+router.get("/bilateralcoops/:id",(req,res) => {
+    BilateralCoop.findById(req.params.id)
+    .then((singleBilateral) => {
+        res.render("site/singleBilateral",{singleBilateral});
+    })
+})
 
 module.exports = router;

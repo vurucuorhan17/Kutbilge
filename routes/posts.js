@@ -100,33 +100,43 @@ router.get("/:id",(req,res) => {
     });
 });
 
-router.post("/test",(req,res) => {
+router.post("/test",async (req,res) => {
     // res.send("TEST OK");
 
-    const { post_image, post_file } = req.files;
+    const post_images = req.files.post_images;
 
-    post_image.mv(path.resolve(__dirname,"../public/img/postimages",post_image.name));
+    const post = await new Post({
+        ...req.body
+    });
 
-    const isFile = typeof post_file != "undefined";
+    await post.save();
 
-    if(isFile)
+    if(Array.isArray(post_images))
     {
-        post_file.mv(path.resolve(__dirname, "../public/post_file", post_file.name));
+        post_images.map((file,i) => {
+            file.mv(path.resolve(__dirname, "../public/img/postimages", file.name));
+
+            Post.findByIdAndUpdate(post._id,{
+                $push: {
+                    post_images: `/img/postimages/${file.name}`
+                }
+            }).then(result => console.log(result));
+            
+        });
+    }
+    else 
+    {
+        post_images.mv(path.resolve(__dirname, "../public/img/postimages", post_images.name));
+
+        Post.findByIdAndUpdate(post._id,{
+            $push: {
+                post_images: `/img/postimages/${post_images.name}`
+            }
+        }).then(result => console.log(result));
     }
 
-    Post.create({
-        ...req.body,
-        post_image: `/img/postimages/${post_image.name}`,
-        post_file: isFile ? `/post_file/${post_file.name}` : null,
-        author: req.session.userId
-    }, );
+    await post.save().then(param => res.redirect("/admin"));
 
-    req.session.sessionFlash = {
-        type: "alert alert-success",
-        message: "Postunuz başarılı bir şekilde oluşturuldu"
-    };
-
-    res.redirect("/symposiums");
 });
 
 module.exports = router;

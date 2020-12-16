@@ -6,9 +6,13 @@ const PostSchema = mongoose.Schema({
     author: {type:Schema.Types.ObjectId,ref:"users"},
     content: { type:String, required:true},
     date: {type:Date, default:Date.now},
-    post_image: { type:String, required:true},
+    post_images: [
+        {
+            type: String
+        }
+    ],
     category: {type:Schema.Types.ObjectId,ref:"categories"},
-    post_file: {
+    pdf_link: {
         type:String
     }
 });

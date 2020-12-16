@@ -19,13 +19,19 @@
 <main id="main" class="col-md-8">
 					<div class="blog">
 						<div class="blog-img">
-							<img class="img-fluid" src="{{post.post_image}}" alt="">
+							<div id="" class="owl-carousel owl-theme">
+                                {{#each post.post_images}}
+                                <div>
+                                    <img src="{{this}}"/>
+                                </div>
+                                {{/each}}
+                            </div>
 						</div>
 						<div class="blog-content">
 							<h3>{{post.title}}</h3>
 							<p>{{post.content}}</p>
 							<br>
-							<a href="{{post.post_file}}">Konferans PDF dosyasını indirmek için tıklayın.</a>
+							<a href="{{post.pdf_link}}">Konferans PDF dosyasını indirmek için tıklayın.</a>
 						</div>
 
 						<!-- /reply form -->

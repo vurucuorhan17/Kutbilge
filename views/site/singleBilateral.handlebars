@@ -1,0 +1,36 @@
+
+	<section id="blog" class="md-padding" style="margin:10px 0px 0px 0px;">
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<div class="row">
+                <main id="main" class="col-md-8 offset-md-2">
+					<div class="blog">
+						<div class="blog-img">
+							<div id="" class="owl-carousel owl-theme">
+                                {{#each singleBilateral.bilateral_coop_images}}
+                                <div>
+                                    <img src="{{this}}"/>
+                                </div>
+                                {{/each}}
+                            </div>
+						</div>
+						<div class="blog-content">
+							<h3>{{singleBilateral.title}}</h3>
+							<p>{{singleBilateral.content}}</p>
+							<br>
+						</div>
+
+						<!-- /reply form -->
+					</div>
+				</main>
+				<!-- /Main -->
+				
+				
+				
+			</div>
+
+		</div>
+	</section>
