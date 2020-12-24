@@ -9,7 +9,15 @@ const path = require("path");
 const BilateralCoop = require("../models/BilateralCoop");
 
 router.get("/",(req,res) => {
-    res.render("admin/index");
+    if(!req.session.userId)
+    {
+        res.redirect("/");
+    }
+    else
+    {
+        res.render("admin/index");
+    }
+    
 });
 
 router.get("/categories",(req,res) => {

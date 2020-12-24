@@ -22,41 +22,9 @@ router.get("/about",(req,res) => {
 
 router.get("/symposiums",(req,res) => {
 
-    const postPerPage = 4;
-    const page = req.query.page || 1;
-
-    Post.find({}).populate({path:"author",model:User}).sort({$natural:-1})
-    .skip((postPerPage * page) - postPerPage)
-    .limit(postPerPage)
+    Post.find({}).sort({$natural:-1})
     .then(posts => {
-
-        Post.countDocuments().then(postCount => {
-            Category.aggregate([
-                {
-                    $lookup:{
-                        from:'posts',
-                        localField:'_id',
-                        foreignField: 'category',
-                        as: 'posts'
-                    }
-                },
-                {
-                    $project:{
-                        _id: 1,
-                        name: 1,
-                        num_of_posts: {$size:'$posts'}
-                    }
-                }
-            ]).then((categories) => {
-                res.render("site/symposium",{
-                    posts:posts,
-                    categories:categories,
-                    current: parseInt(page),
-                    pages: Math.ceil(postCount/postPerPage)
-                });
-            });
-        });
-        
+        res.render("site/symposium",{ posts });
     })
     
 });
@@ -89,11 +57,7 @@ router.get("/management",(req,res) => {
 });
 
 router.get("/magazines",(req,res) => {
-    Magazine.aggregate([
-        {
-            $match: {}
-        }
-    ])
+    Magazine.find({}).sort({$natural: -1})
     .then(magazines => {
         res.render("site/magazine",{magazines});
     });
